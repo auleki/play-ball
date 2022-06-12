@@ -1,0 +1,19 @@
+{
+  "name": "play-ball-be",
+  "version": "1.0.0",
+  "description": "The backend for what is starting out as a referee assistant",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/auleki/play-ball.git"
+  },
+  "author": "auleki",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/auleki/play-ball/issues"
+  },
+  "homepage": "https://github.com/auleki/play-ball#readme"
+}
