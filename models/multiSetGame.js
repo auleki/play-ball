@@ -3,18 +3,12 @@ const { model, Schema } = mongoose;
 
 const gameSchema = new Schema({
   teamA: {
-    type: Schema.Types.ObjectId,
-    ref: 'team',
+    type: Object,
     required: true
   },
   teamB: {
-    type: Schema.Types.ObjectId,
-    ref: 'team',
+    type: Object,
     required: true
-  },
-  mode: {
-    type: String,
-    enum: ['official', 'multi_set', 'soft']
   },
   stats: {
     type: Object,
@@ -26,20 +20,15 @@ const gameSchema = new Schema({
   referee: {
     type: Schema.Types.ObjectId,
     ref: 'referee',
-    required: true,
-    unique: true
-  },
-  proTeams: {
-    type: [Schema.Types.ObjectId],
-    ref: 'team'
+    required: true
   },
   // if mode is multi-set, this is required
   otherTeams: {
     type: [Object],
-    ref: 'team'
+    required: true
   },
 });
 
-const Game = model('Game', gameSchema);
+const MultiSet = model('MultiSet', gameSchema);
 
-export default Game;
+export default MultiSet;
