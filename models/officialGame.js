@@ -12,10 +12,6 @@ const gameSchema = new Schema({
     ref: 'team',
     required: true
   },
-  mode: {
-    type: String,
-    enum: ['official', 'multi_set', 'soft']
-  },
   stats: {
     type: Object,
   },
@@ -26,20 +22,15 @@ const gameSchema = new Schema({
   referee: {
     type: Schema.Types.ObjectId,
     ref: 'referee',
-    required: true,
-    unique: true
+    required: true
   },
-  proTeams: {
-    type: [Schema.Types.ObjectId],
-    ref: 'team'
-  },
-  // if mode is multi-set, this is required
   otherTeams: {
-    type: [Object],
-    ref: 'team'
+    type: [Schema.Types.ObjectId],
+    ref: 'team',
+    required: true
   },
 });
 
-const Game = model('Game', gameSchema);
+const OfficialGame = model('OfficialGame', gameSchema);
 
-export default Game;
+export default OfficialGame;

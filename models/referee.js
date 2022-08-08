@@ -1,7 +1,7 @@
-const mongoose = require("mongoose");
+import mongoose from 'mongoose';
 const { model, Schema } = mongoose;
 
-const officialSchema = new Schema({
+const refereeSchema = new Schema({
   firstName: {
     type: String,
     required: true,
@@ -14,22 +14,24 @@ const officialSchema = new Schema({
     required: true,
   },
   password: {
-    type: Number,
+    type: String,
     required: true
   },
   username: {
-    type: Number,
+    type: String,
     required: true
   },
   verified: {
     type: Boolean,
-    required: true
+    default: false
   },
   gamesOfficiated: {
-    pickup: Number,
-    official: Number
+    pickup: Number,// this should be a reference to the game
+    official: Number // this should be a reference to the game
   }
 
 }, { timestamps: true });
 
-module.export = model('Official', officialSchema);
+const Referee = model('Referee', refereeSchema);
+
+export default Referee;

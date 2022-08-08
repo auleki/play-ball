@@ -1,24 +1,27 @@
-const mongoose = require("mongoose");
-const { Schema, model } = mongoose;
+import mongoose from 'mongoose';
+const { model, Schema } = mongoose;
 
 const teamSchema = new Schema({
   name: {
     type: String,
+    unique: true,
     required: true,
   },
-  score: {
-    type: Number,
-    required: true
-  },
-  fouls: {
-    type: Number
-  },
-  players: [],
-  steals: Number,
-  blocks: Number,
-  threePointer: Number,
-  twoPointer: Number,
-
+  players: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "player"
+    }
+  ],
+  games: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "games"
+    }
+  ],
+  isPlaying: Boolean,
 }, { timestamps: true });
 
-module.export = model('Team', teamSchema);
+const Team = model('Team', teamSchema);
+
+export default Team;
